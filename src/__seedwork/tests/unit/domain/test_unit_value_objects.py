@@ -2,8 +2,41 @@ from dataclasses import FrozenInstanceError, is_dataclass
 import unittest
 from unittest.mock import patch
 from __seedwork.domain.exceptions import InvalidUuidException
-from __seedwork.domain.value_objects import UniqueEntityId
+from __seedwork.domain.value_objects import UniqueEntityId, ValueObject
+from dataclasses import dataclass
+from abc import ABC
 import uuid
+
+@dataclass(frozen=True)
+class StubOneProp(ValueObject):
+    prop: str
+
+@dataclass(frozen=True)
+class StubTwoProp(ValueObject):
+    prop1: str
+    prop2: str
+
+class TestValueObjectUnit(unittest.TestCase):
+    def test_if_is_a_dataclass(self):
+        self.assertTrue(is_dataclass(UniqueEntityId))
+    
+    def test_if_is_a_abstract_class(self):
+        self.assertIsInstance(ValueObject(),ABC)
+    
+    def test_init_prop(self):
+        vo1 = StubOneProp(prop='value')
+        self.assertEqual(vo1.prop,'value')
+
+        vo2 = StubTwoProp(prop1='value1',prop2='value2')
+        self.assertEqual(vo2.prop1,'value1')
+        self.assertEqual(vo2.prop2,'value2')
+    
+    def test_convert_to_string(self):
+        vo1 = StubOneProp(prop='value')
+        self.assertEqual(str(vo1),'value')
+
+        vo2 = StubTwoProp(prop1='value1',prop2='value2')
+        self.assertEqual(str(vo2),'{"prop1": "value1", "prop2": "value2"}')
 
 class TestUniqueEntityIdUnit(unittest.TestCase):
 
