@@ -48,5 +48,9 @@ class TestUniqueEntityIdUnit(unittest.TestCase):
         with self.assertRaises(FrozenInstanceError):
             value_object = UniqueEntityId()
             value_object.id = 'f7b3a8f5-4d9f-4c1c-8a4f-4a5d9f4d9f4c' # type: ignore
+
+    def test_str_representation(self):
+        value_object = UniqueEntityId()
+        self.assertEqual(value_object.id,str(value_object))
     
         
