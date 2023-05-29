@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime
-from dataclasses import is_dataclass
+from dataclasses import FrozenInstanceError, is_dataclass
 from category.domain.entities import Category
 
 
@@ -37,3 +37,8 @@ class TestCategory(unittest.TestCase):
             category1.created_at,
             category2.created_at
         )
+    
+    def test_is_immutable(self):
+        with self.assertRaises(FrozenInstanceError):
+            value_object = Category(name='Test') 
+            value_object.name = 'Test 2' # type: ignore
