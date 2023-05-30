@@ -1,1 +1,4 @@
 __pycache__.pdm-python
+.history/
+*.pyc
+__pypackages__

@@ -14,13 +14,20 @@
 	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
 	"service": "app",
 
+	
+	// The optional 'workspaceFolder' property is the path VS Code should open by default when
+	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
+	"workspaceFolder": "/home/python/app",
+
+	"settings": {
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"python.pythonPath": "/usr/local/bin/python"
+	},
+
 	"extensions":[
 		"ms-python.python",
 		"sourcery.sourcery"
 	],
-	// The optional 'workspaceFolder' property is the path VS Code should open by default when
-	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
-	"workspaceFolder": "/home/python/app",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},

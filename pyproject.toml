@@ -14,4 +14,6 @@ license = {text = "MIT"}
 [tool.pdm.dev-dependencies]
 dev = [
     "autopep8>=2.0.2",
+    "pylint>=2.17.4",
+    "pytest>=7.3.1",
 ]
