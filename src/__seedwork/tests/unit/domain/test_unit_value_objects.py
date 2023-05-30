@@ -1,11 +1,11 @@
-from dataclasses import FrozenInstanceError, is_dataclass
+# pylint: disable=protected-access
+from dataclasses import FrozenInstanceError, is_dataclass, dataclass
 import unittest
-from unittest.mock import patch
-from __seedwork.domain.exceptions import InvalidUuidException
-from __seedwork.domain.value_objects import UniqueEntityId, ValueObject
-from dataclasses import dataclass
-from abc import ABC
 import uuid
+from unittest.mock import patch
+from abc import ABC
+from __seedwork.domain.value_objects import UniqueEntityId, ValueObject
+from __seedwork.domain.exceptions import InvalidUuidException
 
 
 @dataclass(frozen=True)

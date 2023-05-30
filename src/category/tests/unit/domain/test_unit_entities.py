@@ -42,3 +42,22 @@ class TestCategory(unittest.TestCase):
         with self.assertRaises(FrozenInstanceError):
             value_object = Category(name='Test')
             value_object.name = 'Test 2'  # type: ignore
+
+    def test_update(self):
+        category = Category(name='Movie')
+        category.update(name='Movie 2', description='some description')
+
+        self.assertEqual(category.name, 'Movie 2')
+        self.assertEqual(category.description, 'some description')
+
+    def test_activate(self):
+        category = Category(name='Movie', is_active=False)
+        category.activate()
+
+        self.assertEqual(category.is_active, True)
+
+    def test_deactivate(self):
+        category = Category(name='Movie', is_active=True)
+        category.deactivate()
+
+        self.assertEqual(category.is_active, False)
